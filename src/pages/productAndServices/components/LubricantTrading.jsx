@@ -1,5 +1,5 @@
 import React from 'react';
-import trading from '../../assets/images/trading.png';
+import trading from '../../../assets/images/trading.png';
 
 const LubricantTrading = () => {
   const points = [
@@ -65,7 +65,7 @@ const LubricantTrading = () => {
                 className="flex items-start gap-6 pb-6 border-b border-white/10 last:border-0 last:pb-0 group"
               >
                 {/* Number */}
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#D4AF37] group-hover:scale-110 transition-transform shrink-0">
+                <span className="text-4xl sm:text-5xl font-extrabold text-white/30 group-hover:text-white transition-colors shrink-0 leading-none">
                   {item.num}
                 </span>
 

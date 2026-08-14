@@ -73,12 +73,12 @@ const Navbar = () => {
           <Link to="/" className="hover:text-[#D4AF37] transition-colors">
             Home
           </Link>
-          <Link to="/products-services" className="text-[#D4AF37] font-semibold hover:text-[#E5C158] transition-colors">
+          <Link to="/products-services" className="hover:text-[#D4AF37] transition-colors">
             Products &amp; Services
           </Link>
-          <a href="/#market-data" className="hover:text-[#D4AF37] transition-colors">
+          <Link to="/real-time-market-data" className="hover:text-[#D4AF37] transition-colors">
             Real Time Market Data
-          </a>
+          </Link>
           <a href="/#about" className="hover:text-[#D4AF37] transition-colors">
             About us
           </a>
@@ -86,9 +86,9 @@ const Navbar = () => {
 
         {/* Desktop Action Buttons */}
         <div className="hidden lg:flex items-center gap-4">
-          <button className="px-5 py-2 text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/50 hover:border-[#D4AF37] rounded-md transition-all">
+          <Link to="/contact-us" className="px-5 py-2 text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/50 hover:border-[#D4AF37] rounded-md transition-all text-center">
             Contact us
-          </button>
+          </Link>
           <button className="px-5 py-2 text-xs font-semibold text-white bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 rounded-md shadow-lg hover:shadow-blue-500/25 transition-all">
             Request a quote
           </button>
@@ -118,17 +118,17 @@ const Navbar = () => {
             <Link
               to="/products-services"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-[#D4AF37] font-semibold py-1.5 border-b border-white/5"
+              className="hover:text-[#D4AF37] py-1.5 border-b border-white/5 transition-colors"
             >
               Products &amp; Services
             </Link>
-            <a
-              href="/#market-data"
+            <Link
+              to="/real-time-market-data"
               onClick={() => setIsMobileMenuOpen(false)}
               className="hover:text-[#D4AF37] py-1.5 border-b border-white/5 transition-colors"
             >
               Real Time Market Data
-            </a>
+            </Link>
             <a
               href="/#about"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -139,9 +139,13 @@ const Navbar = () => {
           </nav>
 
           <div className="flex flex-col gap-2.5 pt-2">
-            <button className="w-full py-2.5 text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/50 rounded-md">
+            <Link
+              to="/contact-us"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full py-2.5 text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/50 rounded-md text-center block"
+            >
               Contact us
-            </button>
+            </Link>
             <button className="w-full py-2.5 text-xs font-semibold text-white bg-gradient-to-r from-blue-700 to-blue-600 rounded-md shadow-lg">
               Request a quote
             </button>
