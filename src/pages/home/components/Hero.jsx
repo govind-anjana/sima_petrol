@@ -21,7 +21,7 @@ const Hero = () => {
           {/* Left Column: Hero Content */}
           <div className="lg:col-span-6 flex flex-col items-start space-y-5 md:space-y-6 text-left">
             {/* Tagline */}
-            <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-wide text-[#D4AF37]">
+            <div className="inline-flex items-center gap-2 text-sm md:text-base font-semibold  text-[#C2903A]">
               <span className="w-4 h-[2px] bg-[#D4AF37]"></span>
               <span>Global Bunker &amp; Lubricant Trading</span>
             </div>

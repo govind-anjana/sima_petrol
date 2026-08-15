@@ -79,9 +79,9 @@ const Navbar = () => {
           <Link to="/real-time-market-data" className="hover:text-[#D4AF37] transition-colors">
             Real Time Market Data
           </Link>
-          <a href="/#about" className="hover:text-[#D4AF37] transition-colors">
+          <Link to="/about-us" className="hover:text-[#D4AF37] transition-colors">
             About us
-          </a>
+          </Link>
         </nav>
 
         {/* Desktop Action Buttons */}
@@ -129,13 +129,13 @@ const Navbar = () => {
             >
               Real Time Market Data
             </Link>
-            <a
-              href="/#about"
+            <Link
+              to="/about-us"
               onClick={() => setIsMobileMenuOpen(false)}
               className="hover:text-[#D4AF37] py-1.5 transition-colors"
             >
               About us
-            </a>
+            </Link>
           </nav>
 
           <div className="flex flex-col gap-2.5 pt-2">
