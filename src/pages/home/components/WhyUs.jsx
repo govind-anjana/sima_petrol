@@ -34,8 +34,8 @@ const WhyUs = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-wider text-[#D4AF37] uppercase">
-            <span>-Why us-</span>
+          <div className="inline-flex items-center gap-2 text-sm md:text-lg font-semibold tracking-wider text-[#C2903A] ">
+            <span>-Why us</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             Why SIMA PETROL?
@@ -47,11 +47,11 @@ const WhyUs = () => {
           {features.map((item, idx) => (
             <div
               key={idx}
-              className="bg-[#0A101D] border border-white/10 hover:border-amber-500/40 rounded-xl p-6 flex flex-col justify-between hover:bg-[#0D1527] transition-all group duration-300 shadow-lg"
+              className="bg-[#181818] border border-white/10 hover:border-amber-500/40 rounded-xl p-6 flex flex-col justify-between hover:bg-[#0D1527] transition-all group duration-300 shadow-lg"
             >
               <div className="space-y-4">
                 {/* Icon Container */}
-                <div className="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-sm bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                   {item.icon}
                 </div>
 
@@ -68,8 +68,8 @@ const WhyUs = () => {
 
               {/* Bottom Action Icon Badge */}
               <div className="pt-6 flex justify-start">
-                <div className="w-8 h-8 rounded-full border border-white/20 group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-gray-900 flex items-center justify-center text-white transition-all">
-                  <ArrowUpRight className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-full border border-white/20 group-hover:border-amber-400 group-hover:bg-amber-400 group-hover:text-gray-900 flex items-center justify-center text-white transition-all">
+                  <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
             </div>

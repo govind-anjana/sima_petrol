@@ -33,7 +33,7 @@ const ContactUs = () => {
             
             <div className="space-y-6">
               <div className="space-y-2">
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                   Get in touch with us
                 </h3>
                 <p className="text-xs md:text-sm text-gray-300">

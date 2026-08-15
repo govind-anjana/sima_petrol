@@ -30,12 +30,12 @@ const MarketExpertise = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header Split Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-6 space-y-3">
-            <div className="text-xs md:text-sm font-semibold tracking-wide text-[#D4AF37]">
-              -Market Expertise-
+            <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
+              -Market Expertise
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-demibold tracking-tight text-white leading-tight">
               Insights That Drive Smarter Decisions
             </h2>
           </div>
@@ -48,8 +48,8 @@ const MarketExpertise = () => {
         </div>
 
         {/* 4 Stat Cards Row Bar Container */}
-        <div className="bg-[#0C152B] border border-white/10 rounded-xl p-6 md:p-8 shadow-2xl">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="bg-[#0C152B] rounded-sm p-6 md:p-8 shadow-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white">
             {stats.map((item, idx) => (
               <div
                 key={idx}

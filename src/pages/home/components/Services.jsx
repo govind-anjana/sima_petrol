@@ -58,8 +58,8 @@ const Services = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-wider text-[#C69A42] uppercase">
-            <span>-Our Services-</span>
+          <div className="inline-flex items-center gap-2 text-sm md:text-lg font-semibold tracking-wider text-[#C2903A]  ">
+            <span>-Our Services</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
             Services Built Around Your Voyage

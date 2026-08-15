@@ -44,14 +44,14 @@ const GlobalCoverage = () => {
       <div className="max-w-7xl mx-auto space-y-8">
         
         {/* Left-Aligned Section Header (Matches Figma Zoomed view) */}
-        <div className="text-left space-y-3 max-w-3xl">
-          <div className="text-xs md:text-sm font-semibold tracking-wide text-[#C69A42]">
+        <div className="text-left space-y-3 max-w-4xl">
+          <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
             Global coverage
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-gray-900 leading-tight">
             Delivering Reliable Marine Solutions Across the Globe
           </h2>
-          <p className="text-xs md:text-sm text-gray-600 leading-relaxed pt-1">
+          <p className="text-xs md:text-sm text-[334155] leading-relaxed pt-1">
             Through our extensive supplier network and strategic partnerships, SIMA PETROL provides bunker fuel, lubricants, engineering, project, and maintenance services across key maritime hubs and international trade routes.
           </p>
         </div>

@@ -29,7 +29,7 @@ const Hero = () => {
           {/* Left Column: Hero Text Content */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-[#020617]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
               Back to back trading, <br className="hidden sm:inline" />
               <span>trusted since 2002.</span>
             </h1>

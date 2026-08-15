@@ -47,7 +47,7 @@ const MarketDataPreview = () => {
           {/* Left Panel: Text & CTA */}
           <div className="lg:col-span-6 p-8 sm:p-12 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              <div className="text-xs md:text-sm font-semibold tracking-wide text-[#C69A42]">
+              <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
                 -Market Data Preview-
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
