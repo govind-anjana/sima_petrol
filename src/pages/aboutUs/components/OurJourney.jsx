@@ -1,6 +1,10 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const OurJourney = () => {
+  const [leftRef, leftInView] = useInView({ threshold: 0.1 });
+  const [timelineRef, timelineInView] = useInView({ threshold: 0.05 });
+
   const milestones = [
     {
       year: '2002',
@@ -39,12 +43,17 @@ const OurJourney = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column: Heading & Paragraph */}
-          <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-28">
-            <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase block">
+          <div
+            ref={leftRef}
+            className={`lg:col-span-5 space-y-4 lg:sticky lg:top-28 transition-all duration-700 ease-out ${
+              leftInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-[0.2em] uppercase block">
               -Our Journey-
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
               Building Trust Across Global Waters Since 2002
             </h2>
 
@@ -54,9 +63,18 @@ const OurJourney = () => {
           </div>
 
           {/* Right Column: Timeline Roadmap matching Figma */}
-          <div className="lg:col-span-7 relative pl-6 border-l-2 border-amber-500/40 space-y-10 ml-2 sm:ml-0">
+          <div
+            ref={timelineRef}
+            className="lg:col-span-7 relative pl-6 border-l-2 border-amber-500/40 space-y-10 ml-2 sm:ml-0"
+          >
             {milestones.map((item, idx) => (
-              <div key={idx} className="relative group">
+              <div
+                key={idx}
+                style={{ transitionDelay: `${idx * 120}ms` }}
+                className={`relative group transition-all duration-700 ease-out ${
+                  timelineInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'
+                }`}
+              >
                 {/* Timeline Dot Node */}
                 <div className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-[#0A0F1D] border-2 border-[#D4AF37] group-hover:bg-[#D4AF37] transition-colors" />
 

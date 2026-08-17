@@ -1,6 +1,10 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const OurStory = () => {
+  const [leftRef, leftInView] = useInView({ threshold: 0.1 });
+  const [rightRef, rightInView] = useInView({ threshold: 0.1 });
+
   const storyStats = [
     { value: '2002', label: 'Founded' },
     { value: '22+', label: 'Years experience' },
@@ -17,12 +21,17 @@ const OurStory = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           {/* Left Column: Title, Glowing Globe Graphic & Stats */}
-          <div className="lg:col-span-5 space-y-6">
+          <div
+            ref={leftRef}
+            className={`lg:col-span-5 space-y-6 transition-all duration-700 ease-out ${
+              leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+            }`}
+          >
             <div className="space-y-3">
-              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase">
-                -Our story-
+              <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-[0.2em] uppercase">
+                -Our story
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">
                 Our existence explained
               </h2>
             </div>
@@ -64,7 +73,12 @@ const OurStory = () => {
           </div>
 
           {/* Right Column: Paragraph Text matching Figma */}
-          <div className="lg:col-span-7 space-y-5 text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed pt-2">
+          <div
+            ref={rightRef}
+            className={`lg:col-span-7 space-y-5 text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed pt-2 transition-all duration-700 ease-out delay-200 ${
+              rightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            }`}
+          >
             <p>
               Founded in 2002, SIMA PETROL began with a clear vision to provide reliable bunker fuel and lubricant solutions to the maritime industry. Through dedication, expertise, and strong supplier relationships, we established a foundation built on trust and operational excellence.
             </p>

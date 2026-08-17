@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const GlobalCoverageMap = () => {
   const [activeTab, setActiveTab] = useState('VLSFO');
+  const [headerRef, headerInView] = useInView({ threshold: 0.1 });
+  const [mapRef, mapInView] = useInView({ threshold: 0.1 });
+  const [partnerRef, partnerInView] = useInView({ threshold: 0.1 });
 
   const tabs = ['VLSFO', 'MGO', 'IFO380'];
 
@@ -52,11 +56,16 @@ const GlobalCoverageMap = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-10 space-y-3">
-          <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase block">
+        <div
+          ref={headerRef}
+          className={`max-w-3xl mb-10 space-y-3 transition-all duration-700 ease-out ${
+            headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-[0.2em] uppercase block">
             Global coverage
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
             Delivering Reliable Marine Solutions Across the Globe
           </h2>
           <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed pt-1">
@@ -82,7 +91,12 @@ const GlobalCoverageMap = () => {
         </div>
 
         {/* Dotted World Map Container with Port Tooltips matching Figma */}
-        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[500px] bg-gradient-to-b from-blue-50/40 to-white rounded-3xl border border-gray-100 p-4 overflow-hidden mb-20">
+        <div
+          ref={mapRef}
+          className={`relative w-full h-[380px] sm:h-[450px] md:h-[500px] bg-gradient-to-b from-blue-50/40 to-white rounded-3xl border border-gray-100 p-4 overflow-hidden mb-20 transition-all duration-700 ease-out ${
+            mapInView ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.97]'
+          }`}
+        >
           
           {/* Dotted SVG Map Graphic */}
           <div className="absolute inset-0 flex items-center justify-center p-6 opacity-60">
@@ -133,7 +147,12 @@ const GlobalCoverageMap = () => {
         </div>
 
         {/* Section Below: Built on Trust and Collaboration (Partner Logos Bar) */}
-        <div className="pt-8 border-t border-gray-200">
+        <div
+          ref={partnerRef}
+          className={`pt-8 border-t border-gray-200 transition-all duration-700 ease-out ${
+            partnerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
             Built on Trust and Collaboration
           </h3>

@@ -1,6 +1,10 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const OurMission = () => {
+  const [leftRef, leftInView] = useInView({ threshold: 0.1 });
+  const [rightRef, rightInView] = useInView({ threshold: 0.1 });
+
   return (
     <section className="bg-slate-50 py-16 md:py-24 text-gray-900 font-sans border-t border-gray-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
@@ -8,12 +12,17 @@ const OurMission = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: Heading & Paragraphs matching Figma */}
-          <div className="lg:col-span-6 space-y-4">
-            <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase block">
-              -Our Mission-
+          <div
+            ref={leftRef}
+            className={`lg:col-span-6 space-y-4 transition-all duration-700 ease-out ${
+              leftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+            }`}
+          >
+            <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-[0.2em] uppercase block">
+              -Our Mission
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
               Driving Maritime Success Through Reliable Solutions
             </h2>
 
@@ -28,7 +37,12 @@ const OurMission = () => {
           </div>
 
           {/* Right Column: World Trade Map Illustration matching Figma */}
-          <div className="lg:col-span-6 flex justify-center items-center">
+          <div
+            ref={rightRef}
+            className={`lg:col-span-6 flex justify-center items-center transition-all duration-700 ease-out delay-150 ${
+              rightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            }`}
+          >
             <div className="relative w-full max-w-md bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200/60 rounded-3xl p-6 sm:p-8 shadow-xl overflow-hidden text-center">
               
               {/* Elliptical Globe Grid SVG */}

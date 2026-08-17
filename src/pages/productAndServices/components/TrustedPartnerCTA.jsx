@@ -1,12 +1,20 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const TrustedPartnerCTA = () => {
+  const [ref, inView] = useInView({ threshold: 0.1 });
+
   return (
     <section className="bg-[#0A0F1D] py-12 md:py-20 text-white font-sans border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Banner Box with World Map Background Graphic */}
-        <div className="relative bg-gradient-to-r from-[#060D1E] via-[#09152E] to-[#060D1E] border border-blue-900/40 rounded-2xl p-8 sm:p-12 md:p-16 text-center overflow-hidden shadow-2xl">
+        <div
+          ref={ref}
+          className={`relative bg-gradient-to-r from-[#060D1E] via-[#09152E] to-[#060D1E] border border-blue-900/40 rounded-2xl p-8 sm:p-12 md:p-16 text-center overflow-hidden shadow-2xl transition-all duration-700 ease-out ${
+            inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
           
           {/* Subtle World Map Dotted Overlay */}
           <div className="absolute inset-0 opacity-15 pointer-events-none flex items-center justify-center">
