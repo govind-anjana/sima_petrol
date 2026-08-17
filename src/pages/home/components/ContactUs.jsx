@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import useInView from '../../../hooks/useInView';
 import { Phone, Mail } from 'lucide-react';
 
 const ContactUs = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,10 +25,10 @@ const ContactUs = () => {
       {/* Background Dot Texture */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         
         {/* Main Split Contact Card Container */}
-        <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 grid grid-cols-1 lg:grid-cols-12">
+        <div className={`rounded-2xl overflow-hidden shadow-2xl border border-white/10 grid grid-cols-1 lg:grid-cols-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           
           {/* Left Dark Navy Card (Details) */}
           <div className="lg:col-span-5 bg-[#0B172E] p-8 md:p-12 flex flex-col justify-between space-y-8 border-b lg:border-b-0 lg:border-r border-white/10">

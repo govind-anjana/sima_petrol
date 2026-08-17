@@ -1,7 +1,9 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 import { Award, Monitor, Globe, Clock } from 'lucide-react';
 
 const MarketExpertise = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
   const stats = [
     {
       icon: <Award className="w-5 h-5 text-blue-400" />,
@@ -27,10 +29,10 @@ const MarketExpertise = () => {
 
   return (
     <section className="bg-[#070D1B] text-white py-16 md:py-24 px-4 md:px-8 font-sans">
-      <div className="max-w-7xl mx-auto space-y-12">
+      <div ref={ref} className="max-w-7xl mx-auto space-y-12">
         
         {/* Section Header Split Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 items-start transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="lg:col-span-6 space-y-3">
             <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
               -Market Expertise
@@ -48,7 +50,7 @@ const MarketExpertise = () => {
         </div>
 
         {/* 4 Stat Cards Row Bar Container */}
-        <div className="bg-[#0C152B] rounded-sm p-6 md:p-8 shadow-2xl">
+        <div className={`bg-[#0C152B] rounded-sm p-6 md:p-8 shadow-2xl transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white">
             {stats.map((item, idx) => (
               <div

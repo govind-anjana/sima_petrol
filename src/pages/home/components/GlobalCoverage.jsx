@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import useInView from '../../../hooks/useInView';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 const GlobalCoverage = () => {
   const [activeTab, setActiveTab] = useState('VLSFO');
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
 
   const fuelTabs = ['VLSFO', 'MGO', 'IFO380'];
 
@@ -41,10 +43,10 @@ const GlobalCoverage = () => {
 
   return (
     <section className="bg-white text-gray-900 py-16 md:py-24 px-4 md:px-8 font-sans border-t border-gray-100">
-      <div className="max-w-7xl mx-auto space-y-8">
+      <div ref={ref} className="max-w-7xl mx-auto space-y-8">
         
         {/* Left-Aligned Section Header (Matches Figma Zoomed view) */}
-        <div className="text-left space-y-3 max-w-4xl">
+        <div className={`text-left space-y-3 max-w-4xl transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
             Global coverage
           </div>
@@ -57,7 +59,7 @@ const GlobalCoverage = () => {
         </div>
 
         {/* Tab Navigation Container */}
-        <div className="w-full bg-[#F8FAFC] rounded-lg border border-gray-200/80 p-1">
+        <div className={`w-full bg-[#F8FAFC] rounded-lg border border-gray-200/80 p-1 transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="grid grid-cols-3 text-center">
             {fuelTabs.map((tab) => (
               <button
@@ -76,7 +78,7 @@ const GlobalCoverage = () => {
         </div>
 
         {/* Interactive World Map & Port Badges Canvas */}
-        <div className="relative w-full min-h-[460px] md:min-h-[560px] bg-white rounded-2xl p-4 overflow-hidden border border-gray-100 shadow-sm flex items-center justify-center">
+        <div className={`relative w-full min-h-[460px] md:min-h-[560px] bg-white rounded-2xl p-4 overflow-hidden border border-gray-100 shadow-sm flex items-center justify-center transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           
           {/* Cyan/Blue Dotted World Map Graphic */}
           <div className="absolute inset-0 flex items-center justify-center opacity-70 pointer-events-none p-4">

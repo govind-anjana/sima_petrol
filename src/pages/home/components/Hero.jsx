@@ -1,7 +1,9 @@
 import React from 'react';
 import { Star, ArrowRight, TrendingUp, TrendingDown, Package } from 'lucide-react';
-
+import useInView from '../../../hooks/useInView';
+import hero from '../../../assets/images/hero.png';
 const Hero = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const marketRates = [
     { name: 'Brent oil', value: '73.10', change: '+1.52%', isUp: true },
     { name: 'Gasoline RBOB', value: '2.9413', change: '-2.05%', isUp: false },
@@ -14,7 +16,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-all duration-700"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop')`,
+          backgroundImage: `url(${hero})`,
         }}
       >
         {/* Dark Linear Gradient Overlays for Readability */}
@@ -23,11 +25,11 @@ const Hero = () => {
       </div>
 
       {/* Main Content & Overlays Container */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 relative z-10 w-full">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Hero Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+          <div className={`lg:col-span-7 flex flex-col items-start space-y-6 text-left transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
               Back to back trading, <br className="hidden sm:inline" />
@@ -80,7 +82,7 @@ const Hero = () => {
           </div>
 
           {/* Right Column: Floating Cards over Ship Visual */}
-          <div className="lg:col-span-5 relative flex flex-col justify-between items-end gap-6 w-full min-h-[380px] lg:min-h-[460px]">
+          <div className={`lg:col-span-5 relative flex flex-col justify-between items-end gap-6 w-full min-h-[380px] lg:min-h-[460px] transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             
             {/* Top/Middle Floating Customer Review Card */}
             <div className="w-full max-w-xs bg-[#0C152B]/90 border border-white/15 backdrop-blur-md rounded-xl p-4 shadow-2xl hover:scale-105 transition-transform duration-300 self-center lg:self-start">

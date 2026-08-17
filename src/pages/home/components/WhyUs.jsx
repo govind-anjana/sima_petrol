@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import useInView from "../../../hooks/useInView";
 import {
   ShieldCheck,
   Globe,
@@ -8,25 +9,7 @@ import {
 } from "lucide-react";
 
 const WhyUsCard = ({ item, index }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [cardRef, isVisible] = useInView({ threshold: 0.2 });
 
   return (
     <div
@@ -66,25 +49,7 @@ const WhyUsCard = ({ item, index }) => {
 };
 
 const WhyUs = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const headerRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHeaderVisible(true);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    if (headerRef.current) {
-      observer.observe(headerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [headerRef, headerVisible] = useInView({ threshold: 0.2 });
 
   const features = [
     {

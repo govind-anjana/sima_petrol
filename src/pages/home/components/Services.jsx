@@ -1,4 +1,5 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 import { ArrowUpRight } from 'lucide-react';
 import our1 from '../../../assets/images/our1.png';
 import our2 from '../../../assets/images/our2.png';
@@ -7,7 +8,59 @@ import our4 from '../../../assets/images/our4.png';
 import our5 from '../../../assets/images/our5.png';
 import our6 from '../../../assets/images/our6.png';
 
+const ServiceCard = ({ service, index }) => {
+  const [cardRef, isVisible] = useInView({ threshold: 0.1 });
+  return (
+    <div
+      ref={cardRef}
+      style={{ transitionDelay: `${index * 150}ms` }}
+      className={`bg-white rounded-xl overflow-hidden border border-gray-200/80 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-700 ease-out flex flex-col justify-between group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+    >
+      {/* Top Card Content */}
+      <div>
+        {/* Service Image */}
+        <div className="h-52 w-full overflow-hidden bg-gray-100 relative">
+          <img
+            src={service.image}
+            alt={service.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        {/* Card Body */}
+        <div className="p-6 space-y-3">
+          {/* Category */}
+          <span className="text-[11px] font-bold tracking-wider text-[#C69A42] uppercase block">
+            {service.category}
+          </span>
+
+          {/* Title */}
+          <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#C69A42] transition-colors leading-snug">
+            {service.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+            {service.description}{' '}
+            <a href="#" className="font-medium text-gray-900 hover:text-[#C69A42] underline">
+              Read more
+            </a>
+          </p>
+        </div>
+      </div>
+
+      {/* Card Footer Button */}
+      <div className="px-6 pb-6 pt-2">
+        <div className="w-8 h-8 rounded-full border border-gray-300 group-hover:border-amber-500 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center text-gray-700 transition-all">
+          <ArrowUpRight className="w-4 h-4" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Services = () => {
+  const [headerRef, headerVisible] = useInView({ threshold: 0.2 });
   const servicesList = [
     {
       image: our1,
@@ -57,7 +110,7 @@ const Services = () => {
     <section id="products" className="bg-[#F8FAFC] text-gray-900 py-20 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
-        <div className="text-center space-y-3">
+        <div ref={headerRef} className={`text-center space-y-3 transition-all duration-700 ease-out ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="inline-flex items-center gap-2 text-sm md:text-lg font-semibold tracking-wider text-[#C2903A]  ">
             <span>-Our Services</span>
           </div>
@@ -69,50 +122,7 @@ const Services = () => {
         {/* 6 Services Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesList.map((service, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-xl overflow-hidden border border-gray-200/80 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-            >
-              {/* Top Card Content */}
-              <div>
-                {/* Service Image */}
-                <div className="h-52 w-full overflow-hidden bg-gray-100 relative">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                {/* Card Body */}
-                <div className="p-6 space-y-3">
-                  {/* Category */}
-                  <span className="text-[11px] font-bold tracking-wider text-[#C69A42] uppercase block">
-                    {service.category}
-                  </span>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#C69A42] transition-colors leading-snug">
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                    {service.description}{' '}
-                    <a href="#" className="font-medium text-gray-900 hover:text-[#C69A42] underline">
-                      Read more
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              {/* Card Footer Button */}
-              <div className="px-6 pb-6 pt-2">
-                <div className="w-8 h-8 rounded-full border border-gray-300 group-hover:border-amber-500 group-hover:bg-amber-500 group-hover:text-white flex items-center justify-center text-gray-700 transition-all">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
+            <ServiceCard key={idx} service={service} index={idx} />
           ))}
         </div>
       </div>
