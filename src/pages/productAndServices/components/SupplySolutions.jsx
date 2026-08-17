@@ -12,7 +12,7 @@ const SupplySolutions = () => {
             SUPPLY SOLUTIONS
           </span>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#020617]   leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight ">
             Flexible Procurement Options Worldwide
           </h2>
 
