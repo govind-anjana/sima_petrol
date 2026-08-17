@@ -5,8 +5,11 @@ import our3 from '../../../assets/images/our3.png';
 import our4 from '../../../assets/images/our4.png';
 import our5 from '../../../assets/images/our5.png';
 import our6 from '../../../assets/images/our6.png';
+import useInView from '../../../hooks/useInView';
 
 const ServicesSection = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
+
   const services = [
     {
       category: 'MARINE FUEL SUPPLY',
@@ -54,10 +57,10 @@ const ServicesSection = () => {
 
   return (
     <section className="bg-[#F8FAFC] py-16 md:py-24 text-gray-900 font-sans border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Centered Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        <div className={`text-center max-w-2xl mx-auto mb-16 space-y-3 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-widest uppercase">
             Our Services
           </span>
@@ -72,7 +75,8 @@ const ServicesSection = () => {
           {services.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-white rounded-xl border border-gray-200/70 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch hover:shadow-md transition-all duration-300"
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`bg-white rounded-xl border border-gray-200/70 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch hover:shadow-md transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             >
               {/* Image Column */}
               <div 

@@ -89,7 +89,7 @@ const BunkerTrading = () => {
   const stats = [
     { number: 120, suffix: "+", label: "Ports Across Major Hubs" },
     { number: 22, suffix: "+", label: "Proven Industry Expertise" },
-    { number: 24, suffix: "/7", label: "Round The Clock Service" },
+    { rawValue: "24/7", label: "Round The Clock Service" },
     { number: 50, suffix: "+", label: "Worldwide Operational Reach" },
   ];
 

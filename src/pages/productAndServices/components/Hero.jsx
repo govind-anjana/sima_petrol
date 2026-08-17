@@ -1,7 +1,10 @@
 import React from 'react';
 import productHeroShip from '../../../assets/images/product-hero-ship.jpg';
+import useInView from '../../../hooks/useInView';
 
 const Hero = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
+
   return (
     <section className="relative w-full h-[550px] md:h-[600px] lg:h-[680px] flex items-center justify-center bg-[#050A15] overflow-hidden text-white font-sans">
       {/* Aerial Ship Background Image matching Figma */}
@@ -13,7 +16,10 @@ const Hero = () => {
       />
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center justify-center py-5 mt-5  md:-mt-80">
+      <div 
+        ref={ref}
+        className={`relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center justify-center py-5 mt-5 md:-mt-80 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+      >
         
         {/* Category Tag */}
         <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-wider uppercase mb-2">

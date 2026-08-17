@@ -1,7 +1,10 @@
 import React from 'react';
 import { ShieldCheck, Cog, CheckCircle, ArrowRight, Zap } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const LubricantSolutions = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
+
   const lubricants = [
     {
       title: 'Cylinder Oil',
@@ -25,10 +28,10 @@ const LubricantSolutions = () => {
 
   return (
     <section className="relative bg-[#060B18] py-16 sm:py-20 text-white font-sans border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className={`flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div>
             <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-amber-400 uppercase mb-2">
               <span className="w-5 h-[2px] bg-amber-400" />
@@ -48,7 +51,8 @@ const LubricantSolutions = () => {
           {lubricants.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-[#0A1124] border border-white/10 hover:border-amber-500/40 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between"
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`bg-[#0A1124] border border-white/10 hover:border-amber-500/40 rounded-xl p-6 transition-all duration-700 hover:-translate-y-1 shadow-lg flex flex-col justify-between ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
             >
               <div>
                 <div className="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-5 text-amber-400">

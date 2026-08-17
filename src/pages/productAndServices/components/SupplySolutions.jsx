@@ -1,13 +1,16 @@
 import React from 'react';
 import { Zap, FileText, Globe } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const SupplySolutions = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
+
   return (
     <section className="bg-[#F8FAFC] py-16 md:py-24 text-gray-900 font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Centered Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className={`text-center max-w-3xl mx-auto mb-16 space-y-3 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="text-[#C2903A] text-sm md:text-lg font-bold tracking-widest uppercase">
             SUPPLY SOLUTIONS
           </span>
@@ -25,7 +28,7 @@ const SupplySolutions = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
           
           {/* Card 1: Spot Supply (White Card) */}
-          <div className="bg-white rounded-sm p-6 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300">
+          <div className={`bg-white rounded-sm p-6 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#FDF8EE] flex items-center justify-center text-[#C2903A] mb-6">
                 <Zap className="w-6 h-6 stroke-[1.75]" />
@@ -48,7 +51,7 @@ const SupplySolutions = () => {
           </div>
 
           {/* Card 2: Contract Supply (Featured Dark Navy Card) */}
-          <div className="bg-[#060D1A] text-white rounded-sm p-6 border border-[#060D1A] shadow-xl flex flex-col justify-between transition-all duration-300">
+          <div className={`bg-[#060D1A] text-white rounded-sm p-6 border border-[#060D1A] shadow-xl flex flex-col justify-between transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#132238] flex items-center justify-center text-[#38BDF8] mb-6">
                 <FileText className="w-6 h-6 stroke-[1.75]" />
@@ -71,7 +74,7 @@ const SupplySolutions = () => {
           </div>
 
           {/* Card 3: Worldwide Coverage (White Card) */}
-          <div className="bg-white rounded-sm p-6 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300">
+          <div className={`bg-white rounded-sm p-6 border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] flex flex-col justify-between hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#FDF8EE] flex items-center justify-center text-[#C2903A] mb-6">
                 <Globe className="w-6 h-6 stroke-[1.75]" />

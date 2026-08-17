@@ -1,7 +1,10 @@
 import React from 'react';
 import trading from '../../../assets/images/trading.png';
+import useInView from '../../../hooks/useInView';
 
 const LubricantTrading = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
+
   const points = [
     {
       num: '01',
@@ -27,12 +30,12 @@ const LubricantTrading = () => {
 
   return (
     <section className="bg-[#050A15] py-16 md:py-24 text-white font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Heading, intro & image */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className={`lg:col-span-6 space-y-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="space-y-3">
               <span className="text-[#C2903A] text-sm md:text-lg font-semibold tracking-wider uppercase">
                 LUBRICANT TRADING
@@ -58,7 +61,7 @@ const LubricantTrading = () => {
           </div>
 
           {/* Right Column: Numbered List 01 - 04 matching Figma */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className={`lg:col-span-6 space-y-6 transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             {points.map((item, index) => (
               <div 
                 key={index}
