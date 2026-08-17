@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowUpRight, TrendingUp, TrendingDown } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const MarketCards = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const cardsData = [
     {
       title: 'Brent Crude',
@@ -38,11 +40,13 @@ const MarketCards = () => {
   ];
 
   return (
-    <section className="bg-slate-50 py-16 md:py-24 text-gray-900 font-sans border-t border-gray-200">
+    <section ref={ref} className="bg-slate-50 py-16 md:py-24 text-gray-900 font-sans border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Section Header */}
-        <div className="mb-12 space-y-2">
+        <div className={`mb-12 space-y-2 transition-all duration-700 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
             Real-Time Market Data
           </h2>
@@ -56,7 +60,10 @@ const MarketCards = () => {
           {cardsData.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-white border border-gray-200/80 rounded-xl p-6 shadow-lg flex flex-col justify-between hover:shadow-xl transition-shadow duration-300 relative group"
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`bg-white border border-gray-200/80 rounded-xl p-6 shadow-lg flex flex-col justify-between hover:shadow-xl transition-all duration-700 ease-out relative group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
             >
               {/* Top right icon button */}
               <div className="absolute top-5 right-5 w-7 h-7 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600 border border-amber-200 opacity-60 group-hover:opacity-100 transition-opacity">

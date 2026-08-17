@@ -1,5 +1,6 @@
 import React from "react";
 import useInView from "../../../hooks/useInView";
+import { Link } from "react-router-dom";
 
 const MarketDataPreview = () => {
   const [ref, isVisible] = useInView({ threshold: 0.2 });
@@ -98,9 +99,9 @@ const MarketDataPreview = () => {
 
             {/* Button */}
             <div className="pt-2">
-              <button className="px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#0A1124] hover:bg-[#16223D] rounded-sm cursor-pointer shadow-md transition-all">
+              <Link to="/real-time-market-data"><button className="px-5 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-white bg-[#0A1124] hover:bg-[#16223D] rounded-sm cursor-pointer shadow-md transition-all">
                 View full data
-              </button>
+              </button></Link>
             </div>
           </div>
 

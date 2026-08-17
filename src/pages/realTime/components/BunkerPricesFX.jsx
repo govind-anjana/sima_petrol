@@ -1,7 +1,9 @@
 import React from 'react';
 import { TrendingUp, TrendingDown } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const BunkerPricesFX = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const bunkerPrices = [
     { port: 'Singapore', vlsfo: '540', hsfo: '816', mgo: '274', chg: '+1.53%', isUp: true },
     { port: 'Fujairah', vlsfo: '740', hsfo: '274', mgo: '447', chg: '+1.53%', isUp: true },
@@ -22,12 +24,14 @@ const BunkerPricesFX = () => {
   ];
 
   return (
-    <section className="bg-[#070D1B] pb-16 text-white font-sans">
+    <section ref={ref} className="bg-[#070D1B] pb-16 text-white font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Bunker Prices Key Ports Table */}
-          <div className="lg:col-span-7 bg-[#0F172A]/80 border border-white/10 rounded-2xl p-6 shadow-2xl">
+          <div className={`lg:col-span-7 bg-[#0F172A]/80 border border-white/10 rounded-2xl p-6 shadow-2xl transition-all duration-700 ease-out delay-100 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <h3 className="text-xl font-bold text-white mb-1">Bunker prices — key ports</h3>
             <p className="text-gray-400 text-xs mb-6">Marine Fuel Prices</p>
 
@@ -60,7 +64,9 @@ const BunkerPricesFX = () => {
           </div>
 
           {/* Right Column: FX Rates List */}
-          <div className="lg:col-span-5 bg-[#0F172A]/80 border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col justify-between">
+          <div className={`lg:col-span-5 bg-[#0F172A]/80 border border-white/10 rounded-2xl p-6 shadow-2xl flex flex-col justify-between transition-all duration-700 ease-out delay-250 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <div>
               <h3 className="text-xl font-bold text-white mb-1">FX Rates</h3>
               <p className="text-gray-400 text-xs mb-6">Currency rate</p>

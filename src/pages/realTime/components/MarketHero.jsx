@@ -1,7 +1,9 @@
 import React from 'react';
 import { TrendingUp, TrendingDown } from 'lucide-react';
+import useInView from '../../../hooks/useInView';
 
 const MarketHero = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const indexPrices = [
     { code: 'VLSFO', price: '$598.40' },
     { code: 'MGO', price: '$811.20' },
@@ -17,7 +19,7 @@ const MarketHero = () => {
   ];
 
   return (
-    <section className="relative bg-[#070D1B] text-white py-16 md:py-24 overflow-hidden font-sans border-b border-white/5">
+    <section ref={ref} className="relative bg-[#070D1B] text-white py-16 md:py-24 overflow-hidden font-sans border-b border-white/5">
       {/* Subtle Radial Blue Glowing Light in background */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-blue-600/10 blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
@@ -25,7 +27,9 @@ const MarketHero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10">
         
         {/* Centered Heading Content */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className={`text-center max-w-3xl mx-auto mb-16 space-y-4 transition-all duration-700 ease-out delay-100 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase">
             Market Intelligence
           </span>
@@ -49,7 +53,9 @@ const MarketHero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: Fuel Price Index */}
-          <div className="lg:col-span-5 bg-[#0F172A]/85 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl">
+          <div className={`lg:col-span-5 bg-[#0F172A]/85 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl transition-all duration-700 ease-out delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             <h3 className="text-lg font-bold text-gray-200 border-b border-white/10 pb-4 mb-4 uppercase tracking-wider text-sm">
               Fuel Price Index
             </h3>
@@ -65,7 +71,9 @@ const MarketHero = () => {
           </div>
 
           {/* Right Column: Area Trend Chart & Rates Tooltip */}
-          <div className="lg:col-span-7 relative bg-[#0B1224]/85 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl min-h-[360px] flex flex-col justify-between">
+          <div className={`lg:col-span-7 relative bg-[#0B1224]/85 border border-white/10 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl min-h-[360px] flex flex-col justify-between transition-all duration-700 ease-out delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
             
             {/* Rates Tooltip Widget Card at Top Right */}
             <div className="absolute top-6 right-6 z-20 bg-[#070D1B]/95 border border-white/15 rounded-xl p-4 shadow-xl max-w-xs space-y-3 w-56">

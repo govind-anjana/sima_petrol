@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Star, ArrowRight, TrendingUp, TrendingDown, Package } from 'lucide-react';
 import useInView from '../../../hooks/useInView';
 import hero from '../../../assets/images/hero.png';
@@ -32,10 +33,50 @@ const Hero = () => {
           {/* Left Column: Hero Text Content */}
           <div className={`lg:col-span-7 flex flex-col items-start space-y-6 text-left transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Headline */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-              Back to back trading, <br className="hidden sm:inline" />
-              <span>trusted since 2002.</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white flex flex-wrap">
+              {"Trading since 2002.".split(" ").map((word, wordIdx, wordsArr) => {
+                const previousLetterCount = wordsArr.slice(0, wordIdx).join(" ").length + (wordIdx > 0 ? 1 : 0);
+                return (
+                  <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+                    {word.split("").map((char, charIdx) => {
+                      const globalIdx = previousLetterCount + charIdx;
+                      return (
+                        <span
+                          key={charIdx}
+                          className="inline-block"
+                          style={{
+                            transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease",
+                            transitionDelay: `${globalIdx * 25}ms`,
+                            transform: isVisible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.9)",
+                            opacity: isVisible ? 1 : 0,
+                          }}
+                        >
+                          <span
+                            className="inline-block"
+                            style={{
+                              animation: isVisible ? "waveFloat 4s ease-in-out infinite" : "none",
+                              animationDelay: `${globalIdx * 80}ms`,
+                            }}
+                          >
+                            {char}
+                          </span>
+                        </span>
+                      );
+                    })}
+                  </span>
+                );
+              })}
             </h1>
+            <style>{`
+              @keyframes waveFloat {
+                0%, 100% {
+                  transform: translateY(0px) rotate(0deg);
+                }
+                50% {
+                  transform: translateY(-5px) rotate(1deg);
+                }
+              }
+            `}</style>
 
             {/* Paragraph Description */}
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl">
@@ -44,12 +85,12 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-black hover:bg-gray-900 border border-white/20 rounded shadow-lg transition-all">
+              <Link to="/contact-us" className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-black hover:bg-gray-900 border border-white/20 rounded shadow-lg transition-all">
                 Get a quote
-              </button>
-              <button className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-transparent hover:bg-white/10 border border-white/50 rounded transition-all">
+              </Link>
+              <a href="#coverage" className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-transparent hover:bg-white/10 border border-white/50 rounded transition-all">
                 Our coverage
-              </button>
+              </a>
             </div>
 
             {/* Bottom-Left Card: Worldwide Fuel Solutions */}

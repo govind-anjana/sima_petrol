@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import useInView from '../../../hooks/useInView';
 
 const AnimatedStat = ({ number, suffix = '', label, rawValue }) => {
@@ -68,9 +69,9 @@ const About = () => {
 
         {/* Learn More Button */}
         <div className={`transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button className="px-6 py-2.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent hover:bg-white/5 border border-white/20 hover:border-white/40 rounded-sm transition-all cursor-pointer">
+          <Link to="/about-us" className="inline-block px-6 py-2.5 text-xs font-semibold text-gray-300 hover:text-white bg-transparent hover:bg-white/5 border border-white/20 hover:border-white/40 rounded-sm transition-all cursor-pointer">
             Learn more
-          </button>
+          </Link>
         </div>
 
         {/* 3 Stat Cards Row with Animated Counter */}

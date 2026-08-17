@@ -1,6 +1,8 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const TickerTape = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const tickerItems = [
     { label: 'Brent Crude', value: '73.10', change: '+1.53%', isUp: true },
     { label: 'Natural Gas', value: '2.685', change: '+1.55%', isUp: true },
@@ -14,7 +16,9 @@ const TickerTape = () => {
   const items = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="w-full bg-[#080D1A] py-3.5 border-y border-[#D4AF37] overflow-hidden font-sans relative">
+    <div ref={ref} className={`w-full bg-[#080D1A] py-3.5 border-y border-[#D4AF37] overflow-hidden font-sans relative transition-all duration-700 ease-out delay-100 ${
+      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+    }`}>
       <div className="flex gap-16 whitespace-nowrap animate-[marquee_25s_linear_infinite]">
         {items.map((item, idx) => (
           <div key={idx} className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold tracking-wider">

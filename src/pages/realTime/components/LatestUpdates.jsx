@@ -1,6 +1,8 @@
 import React from 'react';
+import useInView from '../../../hooks/useInView';
 
 const LatestUpdates = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.1 });
   const newsItems = [
     {
       category: 'Bunker',
@@ -29,11 +31,13 @@ const LatestUpdates = () => {
   ];
 
   return (
-    <section className="bg-white py-16 text-gray-900 font-sans border-t border-gray-200">
+    <section ref={ref} className="bg-white py-16 text-gray-900 font-sans border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Header with inline button */}
-        <div className="flex items-end justify-between mb-12">
+        <div className={`flex items-end justify-between mb-12 transition-all duration-700 ease-out delay-100 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <div>
             <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
               Market news
@@ -53,7 +57,10 @@ const LatestUpdates = () => {
           {newsItems.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-slate-50 border border-gray-200 rounded-xl overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-300 flex flex-col sm:flex-row shadow-sm hover:shadow-md group"
+              style={{ transitionDelay: `${idx * 150}ms` }}
+              className={`bg-slate-50 border border-gray-200 rounded-xl overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-700 ease-out flex flex-col sm:flex-row shadow-sm hover:shadow-md group ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}
             >
               {/* Thumbnail Image on Left */}
               <div className="w-full sm:w-44 h-48 sm:h-auto overflow-hidden relative shrink-0">

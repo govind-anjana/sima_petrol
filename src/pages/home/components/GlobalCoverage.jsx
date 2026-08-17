@@ -42,7 +42,7 @@ const GlobalCoverage = () => {
   };
 
   return (
-    <section className="bg-white text-gray-900 py-16 md:py-24 px-4 md:px-8 font-sans border-t border-gray-100">
+    <section id="coverage" className="bg-white text-gray-900 py-16 md:py-24 px-4 md:px-8 font-sans border-t border-gray-100">
       <div ref={ref} className="max-w-7xl mx-auto space-y-8">
         
         {/* Left-Aligned Section Header (Matches Figma Zoomed view) */}
