@@ -21,7 +21,7 @@ const AboutUs = () => {
         <OurVision />
         <OurJourney />
         <GlobalCoverageMap />
-        <WhyUsSection />
+        {/* <WhyUsSection /> */}
         <TrustedPartnerCTA />
         <ContactUs />
       </main>

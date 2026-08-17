@@ -13,10 +13,10 @@ const Contacts = () => {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 space-y-3">
-          <span className="text-[#D4AF37] text-xs font-bold tracking-[0.25em] uppercase block">
+          <span className="text-[#C2903A] text-sm md:text-lg font-bold tracking-[0.25em] uppercase block">
             Contact us
           </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">
             We'd love to hear from you
           </h1>
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed">

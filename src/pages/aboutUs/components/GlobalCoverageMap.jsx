@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import useInView from '../../../hooks/useInView';
-
+import layers from '../../../assets/images/layers.png';
+import sisyphus from '../../../assets/images/sisyphus.png';
+import circooles from '../../../assets/images/circooles.png';
+import catalog from '../../../assets/images/catalog.png';
+import quotient from '../../../assets/images/quotient.png';
 const GlobalCoverageMap = () => {
   const [activeTab, setActiveTab] = useState('VLSFO');
   const [headerRef, headerInView] = useInView({ threshold: 0.1 });
@@ -44,11 +48,11 @@ const GlobalCoverageMap = () => {
   };
 
   const partners = [
-    { name: 'Layers', icon: '✦' },
-    { name: 'Sisyphus', icon: '❖' },
-    { name: 'Circooles', icon: '●' },
-    { name: 'Catalog', icon: '⬡' },
-    { name: 'Quotient', icon: '◈' },
+    { name: 'Layers', img: layers },
+    { name: 'Sisyphus', img: sisyphus },
+    { name: 'Circooles', img: circooles },
+    { name: 'Catalog', img: catalog },
+    { name: 'Quotient', img: quotient },
   ];
 
   return (
@@ -157,11 +161,10 @@ const GlobalCoverageMap = () => {
             Built on Trust and Collaboration
           </h3>
 
-          <div className="flex flex-wrap items-center justify-between gap-6 opacity-70 grayscale hover:grayscale-0 transition-all">
+          <div className="flex flex-wrap items-center justify-between gap-6 ">
             {partners.map((p, pIdx) => (
-              <div key={pIdx} className="flex items-center gap-2 text-xl font-extrabold text-gray-800 tracking-wider">
-                <span className="text-amber-500 text-2xl">{p.icon}</span>
-                <span>{p.name}</span>
+              <div key={pIdx} className="flex items-center justify-center h-8 sm:h-10">
+                <img src={p.img} alt={p.name} className="h-full w-auto object-contain" />
               </div>
             ))}
           </div>
