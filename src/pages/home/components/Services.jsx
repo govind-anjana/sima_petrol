@@ -14,7 +14,7 @@ const ServiceCard = ({ service, index }) => {
     <div
       ref={cardRef}
       style={{ transitionDelay: `${index * 150}ms` }}
-      className={`bg-white rounded-xl overflow-hidden border border-gray-200/80 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-700 ease-out flex flex-col justify-between group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className={`bg-white rounded-sm overflow-hidden border border-gray-200/80 hover:border-amber-400 shadow-sm hover:shadow-xl transition-all duration-700 ease-out flex flex-col justify-between group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
     >
       {/* Top Card Content */}
       <div>
@@ -28,21 +28,21 @@ const ServiceCard = ({ service, index }) => {
         </div>
 
         {/* Card Body */}
-        <div className="p-6 space-y-3">
+        <div className="p-4 space-y-2">
           {/* Category */}
-          <span className="text-[11px] font-bold tracking-wider text-[#C69A42] uppercase block">
+          <span className="text-[14px] font-bold tracking-wider text-[#C2903A] uppercase block">
             {service.category}
           </span>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#C69A42] transition-colors leading-snug">
+          <h3 className="text-lg font-bold text-gray-900  transition-colors leading-snug">
             {service.title}
           </h3>
 
           {/* Description */}
           <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
             {service.description}{' '}
-            <a href="#" className="font-medium text-gray-900 hover:text-[#C69A42] underline">
+            <a href="#" className="font-semibold text-gray-900 underline-none ">
               Read more
             </a>
           </p>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, ArrowRight, TrendingUp, TrendingDown, Package } from 'lucide-react';
 import useInView from '../../../hooks/useInView';
 import hero from '../../../assets/images/hero.png';
+import container from '../../../assets/images/container.png'  
 const Hero = () => {
   const [ref, isVisible] = useInView({ threshold: 0.1 });
   const marketRates = [
@@ -31,7 +32,7 @@ const Hero = () => {
           {/* Left Column: Hero Text Content */}
           <div className={`lg:col-span-7 flex flex-col items-start space-y-6 text-left transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
               Back to back trading, <br className="hidden sm:inline" />
               <span>trusted since 2002.</span>
             </h1>
@@ -43,22 +44,22 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button className="px-7 py-3 text-xs md:text-sm font-semibold text-white bg-black hover:bg-gray-900 border border-white/20 rounded shadow-lg transition-all">
+              <button className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-black hover:bg-gray-900 border border-white/20 rounded shadow-lg transition-all">
                 Get a quote
               </button>
-              <button className="px-7 py-3 text-xs md:text-sm font-semibold text-white bg-transparent hover:bg-white/10 border border-white/50 rounded transition-all">
+              <button className="px-8 py-3 text-xs md:text-sm font-semibold text-white bg-transparent hover:bg-white/10 border border-white/50 rounded transition-all">
                 Our coverage
               </button>
             </div>
 
             {/* Bottom-Left Card: Worldwide Fuel Solutions */}
-            <div className="mt-8 w-full max-w-md bg-[#0C152B]/90 border border-white/15 backdrop-blur-md rounded-xl p-5 shadow-2xl flex items-center justify-between group hover:border-[#C2903A]/50 transition-all">
-              <div className="space-y-1.5 pr-4">
+            <div className="mt-8 w-full max-w-sm bg-blue-900/10 backdrop-blur-md   rounded-xl p-5 shadow-2xl flex items-center justify-between group hover:border-[#C2903A]/50 transition-all">
+              <div className="space-y-1.5 pr-4 ">
                 <span className="text-[11px] font-semibold text-gray-400 block">
                   World wide
                 </span>
                 <h3 className="text-sm font-bold text-white leading-snug">
-                  Reliable Fuel Solutions Across Global Ports
+                  Reliable Fuel Solutions  Across Global Ports
                 </h3>
                 <a 
                   href="#contact" 
@@ -69,14 +70,9 @@ const Hero = () => {
                 </a>
               </div>
 
-              {/* 3D Shipping Container Illustration Graphic */}
-              <div className="relative shrink-0 w-20 h-16 sm:w-24 sm:h-20 bg-gradient-to-br from-blue-600 to-indigo-900 rounded-lg border border-blue-400/30 flex items-center justify-center shadow-inner overflow-hidden">
-                <div className="absolute inset-0 bg-blue-500/10 grid grid-cols-4 gap-1 p-1">
-                  <div className="border-r border-blue-400/20"></div>
-                  <div className="border-r border-blue-400/20"></div>
-                  <div className="border-r border-blue-400/20"></div>
-                </div>
-                <Package className="w-9 h-9 text-cyan-300 drop-shadow-md relative z-10" />
+              {/* Container Illustration Graphic */}
+              <div className="relative shrink-0 w-20 h-16 sm:w-28 sm:h-24 flex items-center justify-center">
+                <img src={container} alt="Container Illustration" className="w-full h-full object-contain drop-shadow-lg" />
               </div>
             </div>
           </div>
@@ -85,9 +81,9 @@ const Hero = () => {
           <div className={`lg:col-span-5 relative flex flex-col justify-between items-end gap-6 w-full min-h-[380px] lg:min-h-[460px] transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             
             {/* Top/Middle Floating Customer Review Card */}
-            <div className="w-full max-w-xs bg-[#0C152B]/90 border border-white/15 backdrop-blur-md rounded-xl p-4 shadow-2xl hover:scale-105 transition-transform duration-300 self-center lg:self-start">
-              <div className="flex items-center justify-between gap-3">
-                {/* Overlapping Avatars */}
+            <div className="w-full opacity-0 max-w-xs border bg-[#0C152B]/90 border border-white/15 backdrop-blur-md rounded-xl p-4 shadow-2xl hover:scale-105 transition-transform duration-300 self-center lg:self-start">
+              <div className="flex  items-center justify-between gap-3">
+               
                 <div className="flex -space-x-2">
                   <img className="w-8 h-8 rounded-full border-2 border-[#0C152B] object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Client" />
                   <img className="w-8 h-8 rounded-full border-2 border-[#0C152B] object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Client" />

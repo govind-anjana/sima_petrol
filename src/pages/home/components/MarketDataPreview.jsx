@@ -1,6 +1,9 @@
 import React from "react";
+import useInView from "../../../hooks/useInView";
 
 const MarketDataPreview = () => {
+  const [ref, isVisible] = useInView({ threshold: 0.2 });
+  
   const bars = [
     {
       white: "35%",
@@ -60,12 +63,12 @@ const MarketDataPreview = () => {
       id="market-data"
       className="w-full bg-[#F8FAFC] text-gray-900 py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 font-sans border-t border-gray-200/80"
     >
-      <div className="w-full max-w-6xl mx-auto space-y-6 sm:space-y-8">
+      <div ref={ref} className="w-full max-w-6xl mx-auto space-y-6 sm:space-y-8">
 
         {/* =========================
             MAIN COMBINED CARD
         ========================== */}
-        <div className="w-full bg-white overflow-hidden shadow-lg border border-gray-200/90 grid grid-cols-1 lg:grid-cols-12">
+        <div className={`w-full bg-white overflow-hidden shadow-lg border border-gray-200/90 grid grid-cols-1 lg:grid-cols-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
           {/* =========================
               LEFT PANEL
@@ -80,7 +83,7 @@ const MarketDataPreview = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight ">
                 Trade on today's numbers.
               </h2>
 
@@ -175,7 +178,8 @@ const MarketDataPreview = () => {
           {marketTickers.map((ticker, idx) => (
             <div
               key={idx}
-              className="w-full bg-white border border-gray-200/90 p-4 sm:p-5 shadow-sm flex items-center justify-between gap-4 hover:shadow-md transition-shadow"
+              style={{ transitionDelay: `${200 + idx * 100}ms` }}
+              className={`w-full bg-white border border-gray-200/90 p-4 sm:p-5 shadow-sm flex items-center justify-between gap-4 hover:shadow-md transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
 
               {/* =========================
@@ -183,11 +187,11 @@ const MarketDataPreview = () => {
               ========================== */}
               <div className="space-y-1 text-left min-w-0">
 
-                <span className="text-[11px] sm:text-xs font-bold text-gray-700 tracking-tight block truncate">
+                <span className="text-[11px] sm:text-sm font-bold text-gray-700 tracking-tight block truncate">
                   {ticker.name}
                 </span>
 
-                <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
                   {ticker.price}
                 </div>
 
