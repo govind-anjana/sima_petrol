@@ -7,13 +7,13 @@ import useCountUp from '../../../hooks/useCountUp';
 const stats = [
   { end: 120, suffix: '+', label: 'Ports Across Major Hubs' },
   { end: 22,  suffix: '+', label: 'Proven Industry Expertise' },
-  { end: 24,  suffix: '/7', label: 'Round The Clock Service' },
+  { raw: '24/7', label: 'Round The Clock Service' },
   { end: 50,  suffix: '+', label: 'Worldwide Operational Reach' },
 ];
 
 // Individual stat card with its own count-up
-const StatCard = ({ end, suffix, label, delay, inView }) => {
-  const count = useCountUp(end, 1800, inView);
+const StatCard = ({ end, suffix, label, raw, delay, inView }) => {
+  const count = useCountUp(end || 0, 1800, inView);
   return (
     <div
       style={{ transitionDelay: `${delay}ms` }}
@@ -22,7 +22,7 @@ const StatCard = ({ end, suffix, label, delay, inView }) => {
       }`}
     >
       <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
-        {count}{suffix}
+        {raw ? raw : `${count}${suffix}`}
       </div>
       <div className="text-xs sm:text-sm text-gray-400 font-medium leading-snug">
         {label}
@@ -80,6 +80,7 @@ const AboutHero = () => {
               end={stat.end}
               suffix={stat.suffix}
               label={stat.label}
+              raw={stat.raw}
               delay={idx * 150}
               inView={statsInView}
             />
