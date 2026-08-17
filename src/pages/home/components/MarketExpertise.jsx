@@ -35,7 +35,7 @@ const MarketExpertise = () => {
             <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
               -Market Expertise
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-demibold tracking-tight text-white leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">
               Insights That Drive Smarter Decisions
             </h2>
           </div>

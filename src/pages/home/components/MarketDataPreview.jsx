@@ -50,7 +50,7 @@ const MarketDataPreview = () => {
               <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
                 -Market Data Preview-
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight ">
                 Trade on today's numbers.
               </h2>
               <p className="text-xs md:text-sm text-gray-600 leading-relaxed max-w-md">

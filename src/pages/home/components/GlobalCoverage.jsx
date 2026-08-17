@@ -48,7 +48,7 @@ const GlobalCoverage = () => {
           <div className="text-sm md:text-lg font-semibold tracking-wide text-[#C2903A]">
             Global coverage
           </div>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-gray-900 leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight ">
             Delivering Reliable Marine Solutions Across the Globe
           </h2>
           <p className="text-xs md:text-sm text-[334155] leading-relaxed pt-1">

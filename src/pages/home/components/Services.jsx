@@ -61,7 +61,7 @@ const Services = () => {
           <div className="inline-flex items-center gap-2 text-sm md:text-lg font-semibold tracking-wider text-[#C2903A]  ">
             <span>-Our Services</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
             Services Built Around Your Voyage
           </h2>
         </div>
